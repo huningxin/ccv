@@ -14,29 +14,11 @@ var capture_height = 0;
 var canvas_width = canvas.width;
 var canvas_height = canvas.height;
 
-var lastCalledTime = null;
-var fps = 0.0;
-
-var intervalID = null;
-
-function computeFPS() {
-  if(!lastCalledTime) {
-     lastCalledTime = new Date().getTime();
-     fps = 0.0;
-     return;
-  }
-  var delta = (new Date().getTime() - lastCalledTime) / 1000;
-  lastCalledTime = new Date().getTime();
-  if (delta == 0) {
-    // avoid overflow
-    return;
-  }
-  fps = (fps + 1 / delta) / 2;
-}
-
-function showFPS() {
-  fpsDiv.innerHTML = 'FPS: ' + fps.toFixed(1);
-}
+var stats = new Stats();
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.bottom = '0px';
+document.body.appendChild( stats.domElement );
   
 function doLiveVideo(stream) {
   var vendorURL = window.URL || window.webkitURL;
@@ -50,7 +32,7 @@ function clearCanvas() {
 
 function drawFace(faces) {
   clearCanvas();
-
+  stats.update();
   for (i = 0; i < faces.length; i++) {
     var face = faces[i];
     context.strokeRect(face.x , face.y, face.width, face.height);
@@ -58,7 +40,6 @@ function drawFace(faces) {
 }
 
 function complete(faces) {
-  computeFPS();
   var drawFunc = drawFace.bind(this, faces);
   requestAnimationFrame(drawFunc);
   var detectFunc = doFaceDetect.bind(this);
@@ -81,7 +62,6 @@ function startFaceDetection(video) {
     doFaceDetect();
   });
     
-  intervalID = setInterval(showFPS, 1000);
 }
 
 navigator.webkitGetUserMedia({

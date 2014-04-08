@@ -1,18 +1,18 @@
 #live {
     position: absolute;
-    left: 10;
-    top: 60;
-    width: 640;
-    height: 480;
+    left: 0;
+    top: 0;
+    width: 320;
+    height: 240;
     background: rgba(0,0,0,0.25);
     z-index:-1;
 }
 #overlay {
   position: absolute;
-  left: 10;
-  top: 60;
-  width: 640;
-  height: 480;
+  left: 0;
+  top: 0;
+  width: 320;
+  height: 240;
   border:1px solid #c3c3c3;
   background: rgba(0,0,0,0);
   z-index:0;

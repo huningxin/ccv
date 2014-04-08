@@ -1,18 +1,20 @@
 <html>
 <head>
-<title>Face Detection Sample</title>
+<title>Face Detection in JavaScript</title>
 <link href="face_detect.css" type="text/css" rel="Stylesheet" />
 </head>
 <body>
-<div>Face Detection Sample</div> <div id="fps">FPS:</div>
-<div>
+<h1>Face Detection in JavaScript</h1>
+<p>The Face Detection example demonstrates how to detect faces in JavaScript.</p>
+<div style="position:relative">
   <video id="live" autoplay></video>
-  <canvas id="overlay" width="640" height="480"></canvas>
+  <canvas id="overlay" width="320" height="240"></canvas>
 </div>
 <div style="visibility: hidden;  width:0; height:0;">
-  <canvas id="target" width="640" height="480"></canvas>
+  <canvas id="target" width="320" height="240"></canvas>
 </div>
 <output></output>
+<script type="text/javascript" src="Stats.js"></script>
 <script type="text/javascript" src="ccv.js"></script>
 <script type="text/javascript" src="face.js"></script>
 <script type="text/javascript" src="face_detect.js"></script>
