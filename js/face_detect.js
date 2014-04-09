@@ -16,8 +16,8 @@ var canvas_height = canvas.height;
 
 var stats = new Stats();
 stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.bottom = '0px';
+stats.domElement.style.right = '0px';
+stats.domElement.style.top = '0px';
 document.body.appendChild( stats.domElement );
   
 function doLiveVideo(stream) {
@@ -66,8 +66,8 @@ function startFaceDetection(video) {
 
 navigator.webkitGetUserMedia({
   audio: false,
-  video: { "mandatory": { "minWidth": 640,
-                          "minHeight": 480}}
+  video: { "mandatory": { "maxWidth": 320,
+                          "maxHeight": 240}}
 }, function(stream) {
   doLiveVideo(stream);
   startFaceDetection(video);
