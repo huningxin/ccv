@@ -66,8 +66,8 @@ function startFaceDetection(video) {
 
 navigator.webkitGetUserMedia({
   audio: false,
-  video: { "mandatory": { "maxWidth": 320,
-                          "maxHeight": 240}}
+  video: { "mandatory": { "minWidth": 320,
+                          "minHeight": 240}}
 }, function(stream) {
   doLiveVideo(stream);
   startFaceDetection(video);
